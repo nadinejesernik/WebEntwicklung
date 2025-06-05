@@ -19,13 +19,15 @@ products.forEach((product) => {
     productList.appendChild(listItem);
 });
 
-const search = document.getElementById("search");
+const search = document.getElementById("searchInput");
 search.addEventListener("input", function(event){
     const userInput = event.target.value.toLowerCase();
 
     const filtered = products.filter((product) => {
         return product.name.toLowerCase().includes(userInput);
     });
+
+    productList.innerHTML = "";
 
     filtered.forEach((product) => {
         const listItem = document.createElement("li");
