@@ -35,3 +35,20 @@ search.addEventListener("input", function (event) {
         productList.appendChild(listItem);
     });
 });
+
+// Nachher: Echte API-Daten
+let allProducts = []; // Globale Variable für alle Produkte
+function loadProducts() {
+fetch('https://dummyjson.com/products?limit=20')
+.then(response => response.json())
+.then(data => {
+allProducts = data.products;
+showProducts(allProducts); // Alle Produkte anzeigen
+})
+.catch(error => {
+console.error('Fehler beim Laden der Produkte:', error);
+showError('Produkte konnten nicht geladen werden.');
+});
+}
+
+loadProducts();
